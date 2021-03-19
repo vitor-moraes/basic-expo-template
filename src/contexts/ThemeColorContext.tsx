@@ -1,7 +1,6 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
 import ThemesData from "../constants/Theme";
 import { ThemeProvider } from "styled-components";
-import useColorScheme from "../hooks/useColorScheme";
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -32,23 +31,16 @@ interface ThemeContextData {
   theme: Theme;
   themeType: String;
   changeTheme: (choosedTheme: String) => void;
-  setDeviceSchemeMode: (isDeviceThemeOn: Boolean) => void;
 }
 
 export const ThemeColorContext = createContext({} as ThemeContextData);
 
 export function ThemeColorProvider({ children, ...rest }: ThemeProviderProps) {
-  const colorScheme = useColorScheme();
-  const [themeType, setThemeType] = useState("light");
-  const [theme, setTheme] = useState(ThemesData.light);
-  const [isDeviceSchemeMode, setIsDeviceSchemeMode] = useState(false);
+  const [themeType, setThemeType] = useState("dark");
+  const [theme, setTheme] = useState(ThemesData.dark);
 
   useEffect(() => {
     //get theme by assync storage and if is using the device theme
-  }, []);
-
-  useEffect(() => {
-    //to get device mode if set is on
   }, []);
 
   function changeTheme(choosedTheme: String) {
@@ -62,8 +54,6 @@ export function ThemeColorProvider({ children, ...rest }: ThemeProviderProps) {
     }
   }
 
-  function setDeviceSchemeMode(isDeviceThemeOn: Boolean) {}
-
   const Theme = ({ children }: StyledThemeProps) => (
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   );
@@ -75,7 +65,6 @@ export function ThemeColorProvider({ children, ...rest }: ThemeProviderProps) {
           theme,
           themeType,
           changeTheme,
-          setDeviceSchemeMode,
         }}
       >
         {children}

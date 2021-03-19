@@ -7,7 +7,12 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
-export const HomeText = styled.Text`
+export const SwitchText = styled.Text`
   color: ${(props) => props.theme.colors.text};
   margin-top: 10px;
+`;
+
+export const SwitchTheme = styled.Switch`
+  transform: scaleX(1.3) scaleY(1.3);
+  margin: 10px;
 `;

@@ -1,9 +1,6 @@
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { ThemeColorProvider } from "../contexts/ThemeColorContext";
 import * as React from "react";
 import Drawer from "./Drawer";
 
